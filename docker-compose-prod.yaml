@@ -1,0 +1,27 @@
+#NOT BEING USED ONLY FOR PROD REFERENCE
+services:
+  api:
+    image: devantebell1/fastapi:latest
+    container_name: fastapi-container
+    ports:
+      - "80:8000"
+    env_file:
+      - .env
+    depends_on:
+      - db
+  db:
+    image: postgres:16
+    container_name: postgres-db
+    env_file:
+      - .env
+    environment:
+      POSTGRES_DB: ${DATABASE_NAME}
+      POSTGRES_USER: ${DATABASE_USERNAME}
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+
+volumes:
+  postgres-data:

@@ -29,6 +29,8 @@ class Post(PostBase):
     user_id: int
     owner: UserOut
     
+    model_config = ConfigDict(from_attributes=True)
+    
 class PostOut(BaseModel):
     Post: Post
     votes: int
