@@ -11,4 +11,4 @@ email-validator
 pydantic-settings
 python-dotenv
 passlib[bcrypt]
-httpx2
+httpx
